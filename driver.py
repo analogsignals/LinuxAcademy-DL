@@ -63,12 +63,14 @@ if platform.system() == 'Linux':
         print("Chromedriver not found; expected path '/usr/bin/chromedriver'")
         exit(1)
 else:
-    if os.path.exists("C:/ChromeDriver/chromedriver.exe"):
-        browser = webdriver.Chrome(executable_path="C:/ChromeDriver/chromedriver.exe",
+    if platform.system() == 'Darwin':
+        browser = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",
                                    options=chrome_options)
     else:
         print("Chromedriver not found; expected path 'C:/ChromeDriver/chromedriver.exe'")
         exit(1)
+
+
 
 browser.set_page_load_timeout(10000)
 browser.set_window_size(1366, 768)
